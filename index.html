@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>OCR</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style/ocr.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://kit.fontawesome.com/4414288e8e.js"></script>
+    <link href="https://kit-pro.fontawesome.com/releases/v5.15.2/css/pro.min.css" rel="stylesheet">
+    <script src='js/tesseract.min.js'></script>
+</head>
+
+<body>
+    <main>
+        <div class="container mt-3">
+            <div class="container row">
+                <div class="col">
+                    <h1 class="display-1">OCR</h1>
+                    <p class="lead">Optical Character Recognitions
+                        <br>Based on Deep Learning
+                        <br>tesseract.js
+                    </p>
+                </div>
+                <div class="row">
+                    <div>
+                        <!-- <h4>Project by</h4>
+                        <p>Mehul Kundu</p> -->
+                    </div>
+                </div>
+
+            </div>
+            <div class="row mt-4">
+                <div class="col-12 col-md-4 ">
+                    <select id="langsel">
+                        <option value='afr'> Afrikaans </option>
+                        <option value='ara'> Arabic </option>
+                        <option value='aze'> Azerbaijani </option>
+                        <option value='bel'> Belarusian </option>
+                        <option value='ben'> Bengali </option>
+                        <option value='bul'> Bulgarian </option>
+                        <option value='cat'> Catalan </option>
+                        <option value='ces'> Czech </option>
+                        <option value='chi_sim'> Chinese </option>
+                        <option value='chi_tra'> Traditional Chinese </option>
+                        <option value='chr'> Cherokee </option>
+                        <option value='dan'> Danish </option>
+                        <option value='deu'> German </option>
+                        <option value='ell'> Greek </option>
+                        <option value='eng' selected> English </option>
+                        <option value='enm'> English (Old) </option>
+                        <option value='meme'> Internet Meme </option>
+                        <option value='epo'> Esperanto </option>
+                        <option value='epo_alt'> Esperanto alternative </option>
+                        <option value='equ'> Math </option>
+                        <option value='est'> Estonian </option>
+                        <option value='eus'> Basque </option>
+                        <option value='fin'> Finnish </option>
+                        <option value='fra'> French </option>
+                        <option value='frk'> Frankish </option>
+                        <option value='frm'> French (Old) </option>
+                        <option value='glg'> Galician </option>
+                        <option value='grc'> Ancient Greek </option>
+                        <option value='heb'> Hebrew </option>
+                        <option value='hin'> Hindi </option>
+                        <option value='hrv'> Croatian </option>
+                        <option value='hun'> Hungarian </option>
+                        <option value='ind'> Indonesian </option>
+                        <option value='isl'> Icelandic </option>
+                        <option value='ita'> Italian </option>
+                        <option value='ita_old'> Italian (Old) </option>
+                        <option value='jpn'> Japanese </option>
+                        <option value='kan'> Kannada </option>
+                        <option value='kor'> Korean </option>
+                        <option value='lav'> Latvian </option>
+                        <option value='lit'> Lithuanian </option>
+                        <option value='mal'> Malayalam </option>
+                        <option value='mkd'> Macedonian </option>
+                        <option value='mlt'> Maltese </option>
+                        <option value='msa'> Malay </option>
+                        <option value='nld'> Dutch </option>
+                        <option value='nor'> Norwegian </option>
+                        <option value='pol'> Polish </option>
+                        <option value='por'> Portuguese </option>
+                        <option value='ron'> Romanian </option>
+                        <option value='rus'> Russian </option>
+                        <option value='slk'> Slovakian </option>
+                        <option value='slv'> Slovenian </option>
+                        <option value='spa'> Spanish </option>
+                        <option value='spa_old'> Old Spanish </option>
+                        <option value='sqi'> Albanian </option>
+                        <option value='srp'> Serbian (Latin) </option>
+                        <option value='swa'> Swahili </option>
+                        <option value='swe'> Swedish </option>
+                        <option value='tam'> Tamil </option>
+                        <option value='tel'> Telugu </option>
+                        <option value='tgl'> Tagalog </option>
+                        <option value='tha'> Thai </option>
+                        <option value='tur'> Turkish </option>
+                        <option value='ukr'> Ukrainian </option>
+                        <option value='vie'> Vietnamese </option>
+                    </select>
+                </div>
+                <div class="col-12 col-md-4 mt-3 mt-md-0">
+                    <div class="box">
+                        <input type="file" name="file-1[]" id="file-1" class="inputfile inputfile-1"
+                            data-multiple-caption="{count} files selected" multiple />
+                        <label for="file-1"><i class="fad fa-upload"></i><span>&ensp;Choose a
+                                file&hellip;</span></label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-5">
+                    <div class="image-container"><img id="selected-image" src="img/default.png" class="col-12 p-0" />
+                    </div>
+                </div>
+                <div class="col-12 col-md-1">
+                    <i id="arrow-right" class="fad fa-arrow-right d-none d-md-block"></i>
+                    <i id="arrow-down" class="fad fa-arrow-down d-block d-md-none"></i>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div id="log">
+                        <span id="startPre">
+                            <a id="startLink" href="#">Click here to recognize text in the demo</a>
+                            <br /> or choose your own image
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/tesseract-ocr.js"></script>
+</body>
+
+</html>
