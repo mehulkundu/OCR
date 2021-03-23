@@ -100,8 +100,8 @@ function progressUpdate(packet){
 function recognizeFile(file){
 	$("#log").empty();
   	const corePath = window.navigator.userAgent.indexOf("Edge") > -1
-    ? 'js/tesseract-core.asm.js'
-    : 'js/tesseract-core.wasm.js';
+    ? 'https://cdn.jsdelivr.net/npm/tesseract.js-core@2.2.0/tesseract-core.asm.js'
+    : 'https://cdn.jsdelivr.net/npm/tesseract.js-core@2.2.0/tesseract-core.wasm.js';
 
 
 	const worker = new Tesseract.TesseractWorker({
